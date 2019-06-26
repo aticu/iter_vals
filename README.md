@@ -6,7 +6,7 @@ This crate allows for on the fly iterator creation.
 
 You can use it to return an iterator over literals:
 
-```
+```rust
 use iter_vals::iter_vals;
 
 #[derive(Debug, PartialEq)]
@@ -43,7 +43,7 @@ assert_eq!(non_digital.next(), None);
 You can conditionally include values.
 This can be useful to return a variable number of values without having to allocate:
 
-```
+```rust
 use iter_vals::iter_vals;
 
 fn next_numbers(start: i32, include_first_number: bool) -> impl Iterator<Item = i32> {
@@ -69,7 +69,7 @@ assert_eq!(next_nums.next(), None);
 You can expand other iterators inside the iterator you return.
 This can be especially useful, when dealing with `Option`s:
 
-```
+```rust
 use iter_vals::iter_vals;
 
 fn make_iter(num1: i32, num2: Option<i32>, num3: i32) -> impl Iterator<Item = i32> {
@@ -115,7 +115,7 @@ assert_eq!(nums, vec![2, 4, 6]);
 
 But this will:
 
-```
+```rust
 use iter_vals::iter_vals;
 
 let nums: Vec<_> = iter_vals!((1 + 1), (2 + 2), (3 + 3)).collect();
